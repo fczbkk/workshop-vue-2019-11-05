@@ -12,7 +12,7 @@
         </div>
         <p>{{ description }}</p>
         <div class="price">
-          {{ price }},- Kč
+          {{ price | price('USD') }}
         </div>
         <div class="addToCart">
           <button>🛒 Add to cart</button>
@@ -23,7 +23,13 @@
 </template>
 
 <script>
+  import priceMixin from './../mixins/price'
+
   export default {
+    mixins: [
+      priceMixin
+    ],
+
     props: {
       id: {
         type: String,

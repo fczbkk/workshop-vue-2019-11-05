@@ -94,7 +94,7 @@
 
   .productDetail .image img {
     width: 100%;
-    max-width: 500px;
+    max-width: 300px;
   }
 
   .box {
