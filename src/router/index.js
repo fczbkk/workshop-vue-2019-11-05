@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Error404 from '../views/Error404.vue'
 
 Vue.use(VueRouter)
 
@@ -11,12 +12,19 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/product-detail/:product_id',
+    name: 'product',
+    component: () => import('../components/ProductDetail'),
+    props (route) {
+      return {
+        product_id: route.params.product_id
+      }
+    }
+  },
+  {
+    path: '*',
+    name: 'error404',
+    component: Error404
   }
 ]
 
